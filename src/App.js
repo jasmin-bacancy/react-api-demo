@@ -1,24 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { Navbar, Container, Nav } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import UserList from './components/UserList';
+import UserForm from './components/UserForm';
+import UserDetail from './components/UserDetail';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <Navbar bg="dark" variant="dark" expand="lg">
+          <Container>
+            <Navbar.Brand as={Link} to="/">User Management</Navbar.Brand>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
+              <Nav className="me-auto">
+                <Nav.Link as={Link} to="/users">Users</Nav.Link>
+                <Nav.Link as={Link} to="/users/add">Add User</Nav.Link>
+              </Nav>
+            </Navbar.Collapse>
+          </Container>
+        </Navbar>
+
+        <Routes>
+          <Route path="/" element={<UserList />} />
+          <Route path="/users" element={<UserList />} />
+          <Route path="/users/add" element={<UserForm />} />
+          <Route path="/users/edit/:id" element={<UserForm />} />
+          <Route path="/users/:id" element={<UserDetail />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

@@ -1,70 +1,110 @@
-# Getting Started with Create React App
+# React API Demo
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A professional CRUD (Create, Read, Update, Delete) application built with React, demonstrating best practices in API integration and state management.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- User Management (CRUD operations)
+- Modern UI with React Bootstrap
+- Centralized API configuration with Axios interceptors
+- Environment-based configuration
+- Error handling and loading states
+- Responsive design
+- Clean and maintainable code structure
 
-### `npm start`
+## Project Structure
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```
+src/
+├── components/
+│   ├── UserList.js      # Displays all users with CRUD actions
+│   ├── UserForm.js      # Form for creating/editing users
+│   └── UserDetail.js    # Detailed view of a single user
+├── services/
+│   ├── api.js           # Centralized API configuration and interceptors
+│   └── userService.js   # User-specific API calls
+└── App.js               # Main application component with routing
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Environment Configuration
 
-### `npm test`
+The application uses environment variables for configuration:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- `.env` - Contains environment-specific variables
+  - `REACT_APP_API_BASE_URL` - Base URL for API requests
 
-### `npm run build`
+To use different environments:
+1. Create `.env.development` for development environment
+2. Create `.env.production` for production environment
+3. Create `.env.test` for testing environment
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## API Configuration
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The application uses a centralized API configuration with Axios interceptors:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **Request Interceptor**
+  - Adds common headers
+  - Logs outgoing requests
+  - Handles authentication tokens (when needed)
 
-### `npm run eject`
+- **Response Interceptor**
+  - Logs incoming responses
+  - Handles common error cases:
+    - 401 (Unauthorized)
+    - 403 (Forbidden)
+    - 404 (Not Found)
+    - 500 (Server Error)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Getting Started
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. Clone the repository
+2. Create a `.env` file in the root directory with the following content:
+   ```
+   REACT_APP_API_BASE_URL=https://jsonplaceholder.typicode.com
+   ```
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
+4. Start the development server:
+   ```bash
+   npm start
+   ```
+5. Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Dependencies
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- React
+- React Router
+- Axios
+- React Bootstrap
+- Bootstrap
 
-## Learn More
+## API Endpoints
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The application uses JSONPlaceholder API for demonstration purposes:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- GET /users - Get all users
+- GET /users/:id - Get a single user
+- POST /users - Create a new user
+- PUT /users/:id - Update a user
+- DELETE /users/:id - Delete a user
 
-### Code Splitting
+## Best Practices Demonstrated
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- Component-based architecture
+- Centralized API configuration
+- Environment-based configuration
+- Error handling
+- Loading states
+- Form validation
+- Responsive design
+- Clean code organization
 
-### Analyzing the Bundle Size
+## Note
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+This application uses JSONPlaceholder API, which is a mock API for testing and prototyping. Changes made through POST, PUT, or DELETE requests won't persist between refreshes.
 
-### Making a Progressive Web App
+## License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is licensed under the MIT License.
